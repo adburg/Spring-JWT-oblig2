@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.time.LocalDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,19 +23,11 @@ class TestUser {
 	
 	private static final String API_ROOT = "http://localhost:8090/elibrary/api/v1";	
 	
-	private String ADMIN_TOKEN = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJiZXJpdEBlbWFpbC5jb20iLCJpc3MiOiJEQVQxNTItTGVjdHVyZXJAVERPWS"
-			+ "IsImZpcnN0bmFtZSI6IkJlcml0IiwibGFzdG5hbWUiOiJKw7hyZ2Vuc2VuIiwicm9sZXMiOlsiU1VQRVJfQURNSU4iLCJVU0VSIiwiQU"
-			+ "RNSU4iXSwiaWF0IjoxNjk2MjAwMTk3LCJleHAiOjE2OTYyODY1OTd9.eLWV51s4rtauq04wiB_ohBMdpfC7k3D9gHPpIqPUmFinV_VBvI"
-			+ "0iuHTev4Xc7Sq5qiSV7aAG3abY96Hu-mG5r23EVFy1Ipwq8t_02-mCzvIcSh25TlcHWUtfzKqM2UPcAwnvZnpvjhDYyPUnKgTN42uZn-ms"
-			+ "SO0N3zo8XT859Eylh2OsRWKla8UYXEz_GttR4cQ1--0-aIIAvOgYk8HmgriOIpQs4WuolzfLsMelk0xEo_C5vMv3XEpaWrKOOhjUl7Gwqqk"
-			+ "R7wT_yISPlLHj28ZcUAgGbKa_R73Fm8br8tgwOaz_nHpi25Nf_VAlqeBKsb5Z8rykM1WVzb9Va242IA";
+	@Value("${admin.token}") 
+	private String ADMIN_TOKEN;
 	
-	private String USER_TOKEN = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJyb2JlcnRAZW1haWwuY29tIiwiaXNzIjoiREFUMTUyLUxlY3R1cmVyQFRET"
-			+ "1kiLCJmaXJzdG5hbWUiOiJSb2JlcnQiLCJsYXN0bmFtZSI6IklzYWFjIiwicm9sZXMiOlsiVVNFUiJdLCJpYXQiOjE2OTYyNTUwNjgsImV4cC"
-			+ "I6MTY5NjM0MTQ2OH0.G1AdRErKUD06FCWZoUJ5RvlbVSFx8eIudf7T3tDamEYgfliPhSFzrBONCHBReUITpaRe5LccsV-IExgzR0UvwkbKff8B"
-			+ "vHR6MukTtQkwRZryr7dklEV3SyMQFGi5rf8UKvchyFbprdWtIvpQWXTfhQM7wTyHiD3z7429dht3E0bJgRg8RzKqNlNBJD7YJLfdcS6j7gjPcu"
-			+ "n2u8TJm73jSIXaW5zib_mwf5ovg0pH4bOh67pmSLFLVGnLEM4CkWvD8SLwGtD8nS5cvW9yEitgeqLhXDffCdQp0pYE17ddZ73DBQ2NvI0uOu5xe"
-			+ "RG4dXIltWb3SdEiwJ3kV8-SKfaDNA";
+	@Value("${user.token}")
+	private String USER_TOKEN;
 	
 	@DisplayName("JUnit test for @GetMapping(/users) endpoint")
 	@Test

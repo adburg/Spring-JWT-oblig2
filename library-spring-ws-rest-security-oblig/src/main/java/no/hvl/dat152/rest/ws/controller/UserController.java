@@ -51,7 +51,7 @@ public class UserController {
 	}
 	
 	@GetMapping(value = "/users/{id}")
-	@PreAuthorize("hasAuthority('USER')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Object> getUser(@PathVariable("id") Long id) 
 			throws UserNotFoundException, OrderNotFoundException, UnauthorizedOrderActionException{
 		
@@ -78,7 +78,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/users/{id}/orders")
-	@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Object> getUserOrders(@PathVariable("id") Long id) throws UserNotFoundException{
 		
 		Set<Order> orders = userService.findOrdersForUser(id);

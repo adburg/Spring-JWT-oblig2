@@ -58,22 +58,20 @@ public class OrderController {
 			@RequestParam(required = false) LocalDate expiry, 
 			@RequestParam(defaultValue = "0") int page,
 			@RequestParam(defaultValue = "3") int size){
-		
+		/*
+		 * Tried this, but wont work because size !< 0
 		Pageable pageable = PageRequest.of(page, size);
 		List <Order> orders = orderService.findByExpiryDate(expiry, pageable);
+			return new ResponseEntity<>(orders, HttpStatus.OK); 
+		*/
+		
+		
+		List<Order> orders = orderService.findAllOrders();
 		if (orders.isEmpty())
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		else
 			return new ResponseEntity<>(orders, HttpStatus.OK); 
-		/*
-		 * Dette var opprinnelig løsning uten dato og page - funker også
-		 * 
-		 *List<Order> orders = orderService.findAllOrders();
-		if (orders.isEmpty())
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		else
-			return new ResponseEntity<>(orders, HttpStatus.OK); 
-		 */
+		 
 	}
 	
 	@GetMapping("/orders/{id}")

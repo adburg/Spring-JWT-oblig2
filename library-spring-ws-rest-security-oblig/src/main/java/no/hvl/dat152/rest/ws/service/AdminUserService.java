@@ -37,7 +37,7 @@ public class AdminUserService {
 		
 		User u = findUser(id);
 		Set <Role> roles = u.getRoles();
-		Role r = new Role(role);
+		Role r = roleRepository.findByName(role.toUpperCase());
 		roles.remove(r);
 		u.setRoles(roles);
 		userRepository.save(u);
@@ -48,7 +48,7 @@ public class AdminUserService {
 		
 		User u = findUser(id);
 		Set <Role> roles = u.getRoles();
-		Role r = new Role(role);
+		Role r = roleRepository.findByName(role.toUpperCase());
 		roles.add(r);
 		u.setRoles(roles);
 		userRepository.save(u);

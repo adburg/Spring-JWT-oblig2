@@ -82,6 +82,7 @@ public class AuthorController {
 	}
 	
 	@PutMapping("/authors/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Object> updateAuthors(@RequestBody Author author, @PathVariable("id") int id) {
 		Author uauthor;
 		try {

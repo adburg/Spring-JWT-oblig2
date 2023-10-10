@@ -33,7 +33,6 @@ public class AdminUserController {
 	@PreAuthorize("hasAuthority('SUPER_ADMIN')")
 	public ResponseEntity<Object> updateUserRole(@PathVariable("id") Long id, @RequestParam("role") String role) 
 			throws UserNotFoundException{
-		
 		try {
 			User u = userService.updateUserRole(id, role);
 			return new ResponseEntity<>(u, HttpStatus.OK);
@@ -41,14 +40,12 @@ public class AdminUserController {
 		} catch (UserNotFoundException e) {
 			return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
 		}
-		
 	}
 	
 	@DeleteMapping("/users/{id}")
 	@PreAuthorize("hasAuthority('SUPER_ADMIN')")
 	public ResponseEntity<Object> deleteUserRole(@PathVariable("id") Long id, 
 			@RequestParam("role") String role) throws UserNotFoundException{
-		
 		try {
 			User u = userService.deleteUserRole(id, role);
 			return new ResponseEntity<>(u, HttpStatus.OK);
@@ -57,5 +54,4 @@ public class AdminUserController {
 			return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
 		}
 	}
-	
 }

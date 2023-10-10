@@ -76,7 +76,7 @@ public class OrderService {
 	public List<Order> findByExpiryDate(LocalDate expiry, Pageable page){
 		
 		Page<Order> orderPage = orderRepository.findByExpiryBefore(expiry, page);
-		return orderPage.getContent();
+		return orderPage.toList();
 	}
 	
 	private boolean verifyPrincipalOfOrder(Long id) throws UnauthorizedOrderActionException {
